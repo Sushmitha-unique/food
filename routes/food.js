@@ -10,13 +10,22 @@ router.get('/',async(req,res)=>{
         res.send("Error"+ err)
     }
 })
+router.get('/:type',async(req,res)=>{
+    try{
+     const breakfast = await  food.findById(req.params.id)
+     res.json(breakfast)
+        }
+    catch(err){
+        res.send("Error"+ err)
+    }
+})
 router.post('/',async(req,res)=>{
     const breakfast = new food(
         {
             url:req.body.url,
             name:req.body.name,
             rating:req.body.rating,
-            address:req.body.address
+            type:req.body.type
         }
     )
     try{

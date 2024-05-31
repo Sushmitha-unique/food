@@ -1,12 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
-
+const cors = require('cors');
 const app = express();
 
 const url = 'mongodb://localhost/food'
 
 app.use(express.json())
-
+app.use(cors())
 mongoose.connect(url,{useNewUrlParser:true})
 const con = mongoose.connection
 
